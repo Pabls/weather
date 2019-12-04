@@ -1,4 +1,4 @@
-package com.ar4i.weather.data.repositories
+package com.ar4i.weather.data.repositories.resources
 
 object ResourcesRepository : IResourcesRepository {
 }

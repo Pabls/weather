@@ -28,7 +28,7 @@
     <dimen name="text_size_40">40sp</dimen>
     <dimen name="text_size_56">56sp</dimen>
 
-    <dimen name="edittext_bg_corner_radius">16dp</dimen>
+    <dimen name="edittext_bg_corner_radius">8dp</dimen>
     <dimen name="edittext_bg_border_with">1dp</dimen>
     <dimen name="edittext_height">56dp</dimen>
 </resources>

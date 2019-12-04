@@ -1,7 +1,8 @@
-package com.ar4i.weather
+package com.ar4i.weather.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ar4i.weather.R
 
 class MainActivity : AppCompatActivity() {
 

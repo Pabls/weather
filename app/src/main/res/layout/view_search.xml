@@ -17,18 +17,18 @@
             app:srcCompat="@drawable/ic_search" />
 
     <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etSearch"
+            android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:backgroundTint="#F3F3F4"
+            android:backgroundTint="@color/light_gray"
             android:hint="@string/fragment_cities.edittext.hint"
             android:inputType="text"
-            android:imeOptions="actionSearch"
-            android:lines="1"
+            android:imeOptions="actionDone"
+            android:lines="@integer/et_lines"
             android:maxLines="@integer/et_lines"
-            android:textColor="#848491"
-            android:textColorHint="#848491"
-            android:textSize="14sp" />
+            android:textColor="@color/dark_gray"
+            android:textColorHint="@color/dark_gray"
+            android:textSize="@dimen/text_size_14" />
 
 </LinearLayout>

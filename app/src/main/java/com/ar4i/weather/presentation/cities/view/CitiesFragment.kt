@@ -1,9 +1,12 @@
 package com.ar4i.weather.presentation.cities.view
 
+import android.os.Bundle
+import android.view.View
+import android.widget.EditText
+import androidx.recyclerview.widget.RecyclerView
 import com.ar4i.weather.R
 import com.ar4i.weather.presentation.base.view.BaseFragment
-import ru.skillbranch.gameofthrones.presentation.base.IBaseView
-import ru.skillbranch.gameofthrones.presentation.base.IPresenter
+import com.ar4i.weather.presentation.cities.view.adapter.CitiesAdapter
 
 class CitiesFragment : BaseFragment(), ICitiesView {
 
@@ -11,7 +14,14 @@ class CitiesFragment : BaseFragment(), ICitiesView {
         fun newInstance() = CitiesFragment()
     }
 
-    private var presenter: IPresenter<IBaseView>? = null
+    private var etSearch: EditText? = null
+    private var rvCities: RecyclerView? = null
+    private var adapter: CitiesAdapter? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initView(view)
+        super.onViewCreated(view, savedInstanceState)
+    }
 
     override fun getLayoutId(): Int = R.layout.fragment_cities
 
@@ -19,11 +29,14 @@ class CitiesFragment : BaseFragment(), ICitiesView {
         getComponent().inject(citiesFragment = this)
     }
 
-    override fun getPresenter(): IPresenter<IBaseView>? = presenter
-    //if (presenter is IPresenter<*>) presenter as IPresenter<*> else null
+    override fun setCities(cities: List<String>) {
+        adapter?.addAllAndNotify(cities)
+    }
 
-
-    override fun setPresenter(presenter: IPresenter<IBaseView>) {
-        this.presenter = presenter
+    private fun initView(view: View) {
+        etSearch = view.findViewById(R.id.et_search)
+        rvCities = view.findViewById(R.id.rv_cities)
+        adapter = CitiesAdapter()
+        rvCities?.adapter = adapter
     }
 }

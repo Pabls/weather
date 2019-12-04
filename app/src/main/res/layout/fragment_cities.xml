@@ -6,30 +6,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <include
-            android:id="@+id/et_search"
-            layout="@layout/view_search"
+    <LinearLayout
+            android:id="@+id/ll_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="@dimen/margin_16"
             android:layout_marginEnd="@dimen/margin_16"
+            android:background="@drawable/bg_search"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/padding_16"
+            android:paddingEnd="@dimen/padding_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                app:srcCompat="@drawable/ic_search"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/light_gray"
+                android:hint="@string/fragment_cities.edittext.hint"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:lines="@integer/et_lines"
+                android:maxLines="@integer/et_lines"
+                android:textColor="@color/dark_gray"
+                android:textColorHint="@color/dark_gray"
+                android:textSize="@dimen/text_size_14"/>
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_cities"
             android:layout_width="match_parent"
             android:layout_height="@dimen/match_constraint"
-            android:layout_marginTop="@dimen/margin_16"
             android:clipToPadding="false"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_search"
+            app:layout_constraintTop_toBottomOf="@+id/ll_search"
             tools:listitem="@layout/item_city"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

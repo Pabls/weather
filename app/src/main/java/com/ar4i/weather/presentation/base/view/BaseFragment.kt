@@ -17,6 +17,7 @@ import ru.skillbranch.gameofthrones.presentation.base.IPresenter
 abstract class BaseFragment : Fragment(), IBaseView {
 
     private var rootLayout: FrameLayout? = null
+    private var presenter: IPresenter<IBaseView>? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(getLayoutId(), container, false)
@@ -56,13 +57,15 @@ abstract class BaseFragment : Fragment(), IBaseView {
             rootLayout?.removeViewAt(rootLayout!!.childCount - 1)
     }
 
+    fun getPresenter(): IPresenter<IBaseView>? = presenter
+
+    fun setPresenter(presenter: IPresenter<IBaseView>) {
+        this.presenter = presenter
+    }
+
     protected abstract fun getLayoutId(): Int
 
     protected abstract fun inject()
-
-    protected abstract fun getPresenter(): IPresenter<IBaseView>?
-
-    abstract fun setPresenter(presenter: IPresenter<IBaseView>)
 
     protected fun getComponent(): IApplicationComponent = WeatherApp.applicationComponent
 
@@ -75,7 +78,9 @@ abstract class BaseFragment : Fragment(), IBaseView {
         if (rootLayout != null) {
             val snackbar = getSnackbar(message)
 
-            if (bgColor != null) { snackbar.view.setBackgroundColor(ContextCompat.getColor(rootLayout!!.context, bgColor)) }
+            if (bgColor != null) {
+                snackbar.view.setBackgroundColor(ContextCompat.getColor(rootLayout!!.context, bgColor))
+            }
 
             if (actionTitle != null && action != null) {
                 snackbar.setAction(actionTitle) { action.invoke() }

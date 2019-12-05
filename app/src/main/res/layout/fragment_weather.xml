@@ -1,7 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</LinearLayout>
+    <TextView
+            android:id="@+id/tv_city_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_22"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/cities"/>
+
+    <TextView
+            android:id="@+id/tv_temperature_label"
+            android:layout_width="@dimen/bg_circle_size"
+            android:layout_height="@dimen/bg_circle_size"
+            android:layout_marginTop="@dimen/margin_8"
+            android:background="@drawable/bg_circle"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_96"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_city_name"
+            tools:text="@string/fragment_weather.degree"/>
+
+    <ImageView
+            android:id="@+id/iv_barometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            app:layout_constraintStart_toStartOf="@+id/tv_temperature_label"
+            app:layout_constraintTop_toBottomOf="@+id/iv_thermometer"
+            app:srcCompat="@drawable/ic_barometer"/>
+
+    <TextView
+            android:id="@+id/tv_atmosphere_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8"
+            android:textSize="@dimen/text_size_18"
+            app:layout_constraintStart_toEndOf="@+id/iv_barometer"
+            app:layout_constraintTop_toTopOf="@+id/iv_barometer"
+            tools:text="18"/>
+
+    <ImageView
+            android:id="@+id/iv_thermometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            app:layout_constraintStart_toStartOf="@+id/tv_temperature_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_temperature_label"
+            app:srcCompat="@drawable/ic_thermometer"/>
+
+    <TextView
+            android:id="@+id/tv_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8"
+            android:textSize="@dimen/text_size_18"
+            app:layout_constraintStart_toEndOf="@+id/iv_thermometer"
+            app:layout_constraintTop_toTopOf="@+id/iv_thermometer" tools:text="22"/>
+
+    <ImageView
+            android:id="@+id/iv_wind_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
+            app:layout_constraintEnd_toStartOf="@+id/tv_wind_speed"
+            app:layout_constraintTop_toBottomOf="@+id/tv_temperature_label"
+            app:srcCompat="@drawable/ic_wind"/>
+
+    <TextView
+            android:id="@+id/tv_wind_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_18"
+            app:layout_constraintEnd_toEndOf="@+id/tv_temperature_label"
+            app:layout_constraintTop_toTopOf="@+id/iv_wind_speed"
+            tools:text="15"/>
+
+
+    <ImageView
+            android:id="@+id/iv_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
+            app:layout_constraintEnd_toStartOf="@+id/tv_humidity"
+            app:layout_constraintTop_toBottomOf="@+id/iv_wind_speed"
+            app:srcCompat="@drawable/ic_humidity"/>
+
+    <TextView
+            android:id="@+id/tv_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_18"
+            app:layout_constraintEnd_toEndOf="@+id/tv_temperature_label"
+            app:layout_constraintTop_toTopOf="@+id/iv_humidity"
+            tools:text="10"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_barometer"
+            tools:listitem="@layout/item_time"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_days"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/match_constraint"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_marginBottom="@dimen/margin_8"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_time"
+            tools:listitem="@layout/item_day">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

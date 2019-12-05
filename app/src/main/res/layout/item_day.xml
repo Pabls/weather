@@ -3,7 +3,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent" android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground">
 
     <TextView
             android:id="@+id/tv_date"
@@ -36,8 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16"
             android:layout_marginEnd="@dimen/margin_16"
-            android:textSize="@dimen/text_size_18"
             android:layout_marginBottom="@dimen/margin_16"
+            android:textSize="@dimen/text_size_18"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_atmosphere_pressure"
             app:layout_constraintTop_toTopOf="parent"
@@ -49,8 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16"
             android:layout_marginEnd="@dimen/margin_16"
-            android:textSize="@dimen/text_size_18"
             android:layout_marginBottom="@dimen/margin_16"
+            android:textSize="@dimen/text_size_18"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -61,6 +63,7 @@
             android:layout_height="1dp"
             android:background="@color/light_gray"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

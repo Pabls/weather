@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -27,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
-                app:srcCompat="@drawable/ic_search"/>
+                app:srcCompat="@drawable/ic_search" />
 
         <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_search"
@@ -42,7 +41,7 @@
                 android:maxLines="@integer/et_lines"
                 android:textColor="@color/dark_gray"
                 android:textColorHint="@color/dark_gray"
-                android:textSize="@dimen/text_size_14"/>
+                android:textSize="@dimen/text_size_14" />
 
     </LinearLayout>
 
@@ -52,11 +51,12 @@
             android:layout_height="@dimen/match_constraint"
             android:clipToPadding="false"
             android:orientation="vertical"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_search"
-            tools:listitem="@layout/item_city"/>
+            tools:listitem="@layout/item_city" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">Local Weather</string>
+    <string name="common.app_name">Local Weather</string>
+    <string name="common.no_network_connection">No network connection</string>
+
     <string name="fragment_cities.edittext.hint">City name</string>
+    <string name="fragment_cities.geolocation_disabled">We could not determine your geolocation,
+        try to find the desired city through the search</string>
 </resources>

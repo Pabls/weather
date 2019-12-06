@@ -43,7 +43,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_atmosphere_pressure"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="22"/>
+            tools:text="22C"/>
 
     <TextView
             android:id="@+id/tv_atmosphere_pressure"

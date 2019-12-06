@@ -14,9 +14,7 @@ class WeatherPresenter(
     override fun attachView(view: IWeatherView?) {
         super.attachView(view)
         getView()?.showLoading()
-        weatherRepository.getWeatherByCityName(cityName = "Moscow", result = {
-            handleResponce(it)
-        })
+        weatherRepository.getWeatherByCityName(cityName = "Moscow", result = { handleResponce(it) })
     }
 
     fun handleResponce(responce: ApiResponce?) {

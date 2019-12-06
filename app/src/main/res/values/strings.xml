@@ -9,5 +9,11 @@
         try to find the desired city through the search</string>
 
     <string name="fragment_weather.degree">°</string>
+    <string name="fragment_weather.wind">WIND</string>
+    <string name="fragment_weather.wind_speed">km/h</string>
+    <string name="fragment_weather.humidity">HUMIDITY</string>
+    <string name="fragment_weather.humidity_percent">%</string>
+    <string name="fragment_weather.pressure">PRESSURE</string>
+    <string name="fragment_weather.pressure_mbar">mbar</string>
 
 </resources>

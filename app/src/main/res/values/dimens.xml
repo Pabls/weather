@@ -34,6 +34,5 @@
     <dimen name="edittext_bg_border_with">1dp</dimen>
     <dimen name="edittext_height">56dp</dimen>
 
-    <dimen name="bg_circle_size">164dp</dimen>
-    <dimen name="bg_circle_border_with">1dp</dimen>
+    <dimen name="image_view_current_condition_size">80dp</dimen>
 </resources>

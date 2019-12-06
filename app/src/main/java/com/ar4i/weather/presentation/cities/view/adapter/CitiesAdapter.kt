@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import com.ar4i.weather.R
 import com.ar4i.weather.presentation.base.view.BaseAdapter
 
-class CitiesAdapter : BaseAdapter<String, CitiesViewHolder>() {
+class CitiesAdapter(private val onCityClick : (String) -> Unit) : BaseAdapter<String, CitiesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CitiesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_city, parent, false)
-        return CitiesViewHolder(view)
+        return CitiesViewHolder(onCityClick,view)
     }
 
 }

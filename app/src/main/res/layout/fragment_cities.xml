@@ -5,45 +5,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout
-            android:id="@+id/ll_search"
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16"
-            android:layout_marginTop="@dimen/margin_16"
-            android:layout_marginEnd="@dimen/margin_16"
-            android:background="@drawable/bg_search"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="@dimen/padding_16"
-            android:paddingEnd="@dimen/padding_16"
+            android:background="@android:color/white"
+            android:fitsSystemWindows="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                app:srcCompat="@drawable/ic_search" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_search"
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolabr"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:backgroundTint="@color/light_gray"
-                android:hint="@string/fragment_cities.edittext.hint"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:lines="@integer/et_lines"
-                android:maxLines="@integer/et_lines"
-                android:textColor="@color/dark_gray"
-                android:textColorHint="@color/dark_gray"
-                android:textSize="@dimen/text_size_14" />
+                android:layout_height="?android:actionBarSize">
 
-    </LinearLayout>
+            <LinearLayout
+                    android:id="@+id/ll_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_marginEnd="@dimen/margin_16"
+                    android:background="@drawable/bg_search"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/padding_16"
+                    android:paddingEnd="@dimen/padding_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_12"
+                        android:layout_marginBottom="@dimen/margin_12"
+                        app:srcCompat="@drawable/ic_search" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/light_gray"
+                        android:hint="@string/fragment_cities.edittext.hint"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:lines="@integer/et_lines"
+                        android:maxLines="@integer/et_lines"
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@color/dark_gray"
+                        android:textSize="@dimen/text_size_14" />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_cities"
@@ -56,7 +72,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_search"
+            app:layout_constraintTop_toBottomOf="@+id/appbar"
             tools:listitem="@layout/item_city" />
+
+    <include
+            android:id="@+id/v_no_cities"
+            layout="@layout/view_no_cities"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/match_constraint"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

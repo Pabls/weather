@@ -3,8 +3,11 @@
     <string name="common.no_network_connection">No network connection</string>
 
     <string name="fragment_cities.edittext.hint">City name</string>
+    <string name="fragment_cities.no_cities">No cities have been added to your favorites. Use the search or</string>
+    <string name="fragment_cities.button.get_location">get the current location</string>
     <string name="fragment_cities.geolocation_disabled">We could not determine your geolocation,
         try to find the desired city through the search</string>
 
-    <string name="fragment_weather.degree">79°</string>
+    <string name="fragment_weather.degree">°</string>
+
 </resources>

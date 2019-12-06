@@ -1,4 +1,3 @@
-
 {
   "data": {
     "current_condition": [
@@ -19,12 +18,6 @@
     "weather": [
       {
         "date": "2019-12-05",
-        "astronomy": [
-          {
-            "sunrise": "07:49 AM",
-            "sunset": "03:53 PM"
-          }
-        ],
         "maxtempC": "8",
         "mintempC": "1",
         "avgtempC": "5",

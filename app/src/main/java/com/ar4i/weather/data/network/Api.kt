@@ -1,7 +1,7 @@
 package com.ar4i.weather.data.network
 
 import com.ar4i.weather.BuildConfig
-import com.ar4i.weather.data.network.response.ApiResponce
+import com.ar4i.weather.data.network.response.ApiResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -23,5 +23,5 @@ interface Api {
         @Query(Q) query: String,
         @Query(FORMAT) format: String = JSON_FORMAT,
         @Query(NUM_OF_DAYS) numOfDays: Int
-    ): Call<ApiResponce>
+    ): Call<ApiResponse>
 }

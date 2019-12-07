@@ -1,6 +1,7 @@
 package com.ar4i.weather.app.di.modules.repositories
 
 import com.ar4i.weather.app.di.modules.app.AppModule
+import com.ar4i.weather.app.di.modules.mappers.MappersModule
 import com.ar4i.weather.app.di.modules.network.NetworkModule
 import com.ar4i.weather.data.repositories.cities.CitiesRepository
 import com.ar4i.weather.data.repositories.cities.ICitiesRepository
@@ -13,7 +14,10 @@ object RepositoriesModule {
     private val resourcesRepository =
         ResourcesRepository.also { it.setContext(AppModule.provideContext()) }
 
-    private val weatherRepository = WeatherRepository.also { it.setApi(NetworkModule.provideApi()) }
+    private val weatherRepository = WeatherRepository.also {
+        it.setApi(NetworkModule.provideApi())
+        it.setWeatherMapper(MappersModule.provideWeatherMapper())
+    }
 
     private val citiesRepository = CitiesRepository
 

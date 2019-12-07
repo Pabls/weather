@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_container"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -11,35 +12,33 @@
             android:id="@+id/tv_date"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16"
-            android:layout_marginEnd="@dimen/margin_16"
-            android:textSize="@dimen/text_size_18"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv_state"
+            app:layout_constraintEnd_toStartOf="@+id/tv_wind_speed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/date/ddmmyy"/>
 
-    <ImageView
-            android:id="@+id/iv_state"
+    <TextView
+            android:id="@+id/tv_humidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16"
-            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_8"
             android:layout_marginBottom="@dimen/margin_16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_temperature"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_rain"/>
+            tools:text="100%"/>
 
     <TextView
             android:id="@+id/tv_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16"
-            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_8"
             android:layout_marginBottom="@dimen/margin_16"
-            android:textSize="@dimen/text_size_18"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_atmosphere_pressure"
             app:layout_constraintTop_toTopOf="parent"
@@ -50,20 +49,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16"
-            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_8"
             android:layout_marginBottom="@dimen/margin_16"
-            android:textSize="@dimen/text_size_18"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="10"/>
+            tools:text="1015mbar"/>
 
     <View
             android:layout_width="@dimen/match_constraint"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/separator_height"
             android:background="@color/light_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+            android:id="@+id/tv_wind_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:layout_marginBottom="@dimen/margin_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_humidity"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="100km/h"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

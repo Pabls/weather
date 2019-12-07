@@ -49,7 +49,7 @@ class CitiesFragment : BaseFragment(), ICitiesView {
         etSearch = view.findViewById(R.id.et_search)
         rvCities = view.findViewById(R.id.rv_cities)
         vNoCities = view.findViewById(R.id.v_no_cities)
-        adapter = CitiesAdapter({ name -> getCitiesPresenter()?.onCityClick(name) })
+        adapter = CitiesAdapter { name -> getCitiesPresenter()?.onCityClick(name) }
         rvCities?.adapter = adapter
     }
 

@@ -9,6 +9,9 @@
     <dimen name="margin_16">16dp</dimen>
     <dimen name="margin_24">24dp</dimen>
     <dimen name="margin_32">32dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_48">48dp</dimen>
+    <dimen name="margin_56">56dp</dimen>
     <dimen name="margin_64">64dp</dimen>
 
     <dimen name="padding_0">0dp</dimen>
@@ -26,13 +29,18 @@
     <dimen name="text_size_18">18sp</dimen>
     <dimen name="text_size_20">20sp</dimen>
     <dimen name="text_size_22">22sp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
+    <dimen name="text_size_32">32sp</dimen>
     <dimen name="text_size_40">40sp</dimen>
     <dimen name="text_size_56">56sp</dimen>
+    <dimen name="text_size_72">72sp</dimen>
     <dimen name="text_size_96">96sp</dimen>
 
     <dimen name="edittext_bg_corner_radius">8dp</dimen>
     <dimen name="edittext_bg_border_with">1dp</dimen>
     <dimen name="edittext_height">56dp</dimen>
 
-    <dimen name="image_view_current_condition_size">80dp</dimen>
+    <dimen name="image_view_current_condition_size">64dp</dimen>
+
+    <dimen name="separator_height">1dp</dimen>
 </resources>

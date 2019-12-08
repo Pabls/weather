@@ -9,6 +9,8 @@ import com.ar4i.weather.data.repositories.resources.IResourcesRepository
 import com.ar4i.weather.data.repositories.weather.IWeatherRepository
 import com.ar4i.weather.presentation.base.BasePresenter
 import com.ar4i.weather.presentation.weather.view.IWeatherView
+import kotlinx.coroutines.*
+
 
 class WeatherPresenter(
     private val weatherRepository: IWeatherRepository,
@@ -17,11 +19,19 @@ class WeatherPresenter(
 ) : BasePresenter<IWeatherView>() {
 
     private var cityVm: CityWeatherVm? = null
+    private var saveCityJob: Job? = null
+    private var getWeatherJob: Job? = null
 
     override fun attachView(view: IWeatherView?) {
         super.attachView(view)
         getView()?.showLoading()
-        getWeather()
+        getWeatherJob = getWeather()
+    }
+
+    override fun detachView() {
+        saveCityJob?.cancel()
+        getWeatherJob?.cancel()
+        super.detachView()
     }
 
     fun onDayClick(date: String) {
@@ -47,24 +57,29 @@ class WeatherPresenter(
         }
     }
 
-    fun saveCity() {
+    fun trySaveCity() {
         if (cityVm != null) {
-            citiesRepository.saveCity(cityVm!!.cityName)
+            saveCityJob = saveCity()
         }
     }
 
-    private fun getWeather() {
-        if (getView()?.getCityName() != null)
-            weatherRepository.getWeatherByCityName(
-                cityName = getView()?.getCityName()!!,
-                result = { handleResponse(it) })
-        else {
-            val location = getView()?.getLocation()
-            if (location?.first != null)
-                weatherRepository.getWeatherByLocation(
-                    lat = location.first!!,
-                    lon = location.second!!,
-                    result = { handleResponse(it) })
+    private fun saveCity() = GlobalScope.launch(Dispatchers.Main) {
+        getView()?.disableFab()
+        val res = withContext(Dispatchers.IO) { citiesRepository.saveCity(cityVm!!.cityName) }
+        hideFab()
+    }
+
+    private fun hideFab() {
+        getView()?.showFab(false)
+        getView()?.showFavoriteImg()
+    }
+
+    private fun getWeather() = GlobalScope.launch(Dispatchers.Main) {
+        if (getView()?.getCityName() != null) {
+            val res = withContext(Dispatchers.IO) {
+                weatherRepository.getWeatherByCityName(cityName = getView()?.getCityName()!!)
+            }
+            handleResponse(res)
         }
     }
 
@@ -77,6 +92,11 @@ class WeatherPresenter(
             getView()?.setDays(cityVm!!.weather)
             getView()?.setHourly(cityVm!!.weather.first().hourly)
             getView()?.setCityName(cityVm!!.cityName)
+
+            val isFavoriteCity = getView()?.isFavoriteCity()
+            if (isFavoriteCity != null && isFavoriteCity) {
+                hideFab()
+            }
             showCurrentWeather()
         }
         getView()?.hideLoading()
@@ -135,13 +155,4 @@ class WeatherPresenter(
             null
         }
     }
-
-//    fun getHourlyByLocalTime(): HourlyVm? {
-//        val currentHour =
-//            SimpleDateFormat("HH", Locale.getDefault()).also { it.timeZone = TimeZone.getDefault() }.format(Date())
-//        return hourly.find {
-//            val hh = it.time.substringBefore(":")
-//            hh == currentHour || hh.toInt() > currentHour.toInt() - 2
-//        }
-//    }
 }

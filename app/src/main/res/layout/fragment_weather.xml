@@ -40,12 +40,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_date" tools:text="13:00"/>
 
-    <ImageView
+    <com.ar4i.weather.presentation.custom.CircleImageView
+            app:civ_borderColor="@color/blue"
             android:id="@+id/iv_current_condition"
             android:layout_width="@dimen/image_view_current_condition_size"
             android:layout_height="@dimen/image_view_current_condition_size"
-            android:layout_marginEnd="@dimen/margin_8"
             android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_temperature_label"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -206,5 +207,16 @@
     <include android:id="@+id/v_city_not_found"
              layout="@layout/view_city_not_found"
              android:visibility="gone"/>
+
+    <ImageView
+            android:id="@+id/img_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_star"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

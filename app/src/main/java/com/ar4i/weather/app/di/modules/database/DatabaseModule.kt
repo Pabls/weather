@@ -6,14 +6,10 @@ import com.ar4i.weather.data.database.CitiesDao
 import com.ar4i.weather.data.database.WeatherDatabase
 
 object DatabaseModule {
-    private var database: WeatherDatabase
-
-    init {
-        database =
-            Room.databaseBuilder(AppModule.provideContext(), WeatherDatabase::class.java, WeatherDatabase.DATABASE_NAME)
-                .fallbackToDestructiveMigration()
-                .build()
-    }
+    private var database: WeatherDatabase =
+        Room.databaseBuilder(AppModule.provideContext(), WeatherDatabase::class.java, WeatherDatabase.DATABASE_NAME)
+            .fallbackToDestructiveMigration()
+            .build()
 
     fun provideCitiesDao(): CitiesDao = database.getCitiesDao()
 }

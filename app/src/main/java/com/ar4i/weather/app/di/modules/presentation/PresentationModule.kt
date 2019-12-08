@@ -11,7 +11,8 @@ class PresentationModule {
         CitiesPresenter(
             RepositoriesModule.provideCitiesRepository(),
             RepositoriesModule.provideWeatherRepository(),
-            RepositoriesModule.provideResourcesRepository()
+            RepositoriesModule.provideResourcesRepository(),
+            RepositoriesModule.provideLocationRepository()
         ) as IPresenter<IBaseView>
 
     fun provideWeatherPresenter(): IPresenter<IBaseView> =

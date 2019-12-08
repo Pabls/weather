@@ -40,7 +40,8 @@
     <dimen name="edittext_bg_border_with">1dp</dimen>
     <dimen name="edittext_height">56dp</dimen>
 
-    <dimen name="image_view_current_condition_size">40dp</dimen>
+    <dimen name="image_view_current_condition_size">56dp</dimen>
+    <dimen name="hourly_image_size">24dp</dimen>
 
     <dimen name="separator_height">1dp</dimen>
 </resources>

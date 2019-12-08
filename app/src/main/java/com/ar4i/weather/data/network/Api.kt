@@ -2,7 +2,7 @@ package com.ar4i.weather.data.network
 
 import com.ar4i.weather.BuildConfig
 import com.ar4i.weather.data.network.response.ApiResponse
-import retrofit2.Call
+import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -18,10 +18,10 @@ interface Api {
     }
 
     @GET(URL_PREFIX)
-    fun getWeather(
+    suspend fun getWeather(
         @Query(KEY) key: String = BuildConfig.API_KEY,
         @Query(Q) query: String,
         @Query(FORMAT) format: String = JSON_FORMAT,
         @Query(NUM_OF_DAYS) numOfDays: Int
-    ): Call<ApiResponse>
+    ): ApiResponse
 }

@@ -11,27 +11,16 @@ object CitiesRepository : ICitiesRepository {
         this.citiesDao = citiesDao
     }
 
-    override fun getCities(): List<String> = mutableListOf(
-        "Moscow",
-        "Perm",
-        "Sochi",
-        "Vladimir",
-        "St.Petersburg",
-        "Cyprus",
-        "Barcelona",
-        "Madrid",
-        "London",
-        "Dublin",
-        "Paris",
-        "Lion",
-        "NY"
-    )
-
-    override fun saveCity(cityName: String) {
-        //citiesDao.insertCity(CityDto(name = cityName))
+    override suspend fun getCities(): List<String> {
+        val cities = citiesDao.getCities()
+        return cities.map { it.name }
     }
 
-    override fun removeCity(cityName: String) {
-        //citiesDao.deleteCityByName(cityName)
+    override suspend fun saveCity(cityName: String) {
+        citiesDao.insertCity(CityDto(name = cityName))
+    }
+
+    override suspend fun removeCity(cityName: String) {
+        citiesDao.deleteCityByName(cityName)
     }
 }

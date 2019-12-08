@@ -1,8 +1,10 @@
 package com.ar4i.weather.data.repositories.resources
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 
+@SuppressLint("StaticFieldLeak")
 object ResourcesRepository : IResourcesRepository {
 
     private lateinit var context: Context

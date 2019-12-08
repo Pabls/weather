@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseAdapter<V, VH : BaseViewHolder<V>> : RecyclerView.Adapter<VH>() {
 
-    protected var items: List<V> = mutableListOf<V>()
+    protected var items = mutableListOf<V>()
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.bind(items.get(position))
@@ -15,11 +15,11 @@ abstract class BaseAdapter<V, VH : BaseViewHolder<V>> : RecyclerView.Adapter<VH>
     }
 
     protected fun getItem(position: Int): V {
-        return items.get(position)
+        return items[position]
     }
 
     fun addAllAndNotify(items: List<V>) {
-        this.items = items
+        this.items = items.toMutableList()
         notifyDataSetChanged()
     }
 }

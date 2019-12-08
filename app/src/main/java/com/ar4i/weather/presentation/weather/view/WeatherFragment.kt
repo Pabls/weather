@@ -20,19 +20,12 @@ class WeatherFragment : BaseFragment(), IWeatherView {
 
     companion object {
         const val EXTRA_CITY_NAME = "EXTRA_CITY_NAME"
-        const val EXTRA_LAT = "EXTRA_LAT"
-        const val EXTRA_LON = "EXTRA_LAT"
+        const val EXTRA_IS_FAVORITE = "EXTRA_IS_FAVORITE"
 
-        fun newInstance(lat: String, lon: String) = WeatherFragment().apply {
-            arguments = Bundle().apply {
-                putString(EXTRA_LAT, lat)
-                putString(EXTRA_LON, lon)
-            }
-        }
-
-        fun newInstance(cityName: String) = WeatherFragment().apply {
+        fun newInstance(cityName: String, isFavorite: Boolean) = WeatherFragment().apply {
             arguments = Bundle().apply {
                 putString(EXTRA_CITY_NAME, cityName)
+                putBoolean(EXTRA_IS_FAVORITE, isFavorite)
             }
         }
     }
@@ -50,21 +43,20 @@ class WeatherFragment : BaseFragment(), IWeatherView {
     private var rvDays: RecyclerView? = null
     private var fabAdd: FloatingActionButton? = null
     private var vCityNotFound: View? = null
+    private var imgFavorite: View? = null
 
     private var daysAdapter: DaysAdapter? = null
     private var hourlyAdapter: HourlyAdapter? = null
 
     private var cityName: String? = null
-    private var lat: String? = null
-    private var lon: String? = null
+    private var isFavorite: Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             cityName = it.getString(EXTRA_CITY_NAME)
-            lat = it.getString(EXTRA_LAT)
-            lon = it.getString(EXTRA_LON)
+            isFavorite = it.getBoolean(EXTRA_IS_FAVORITE, false)
         }
     }
 
@@ -81,7 +73,7 @@ class WeatherFragment : BaseFragment(), IWeatherView {
 
     override fun getCityName(): String? = cityName
 
-    override fun getLocation(): Pair<String?, String?> = lat to lon
+    override fun isFavoriteCity(): Boolean? = isFavorite
 
     override fun setDays(days: List<DayWeatherVm>) {
         daysAdapter?.addAllAndNotify(days)
@@ -131,10 +123,29 @@ class WeatherFragment : BaseFragment(), IWeatherView {
         tvHumidity?.text = humidity
     }
 
-    @SuppressLint("RestrictedApi")
     override fun showNotFoundError() {
         vCityNotFound?.visibility = View.VISIBLE
-        fabAdd?.visibility = View.GONE
+        showFab(false)
+    }
+
+    override fun disableFab() {
+        fabAdd?.isEnabled = false
+    }
+
+    @SuppressLint("RestrictedApi")
+    override fun showFab(show: Boolean) {
+        if (show)
+            fabAdd?.visibility = View.VISIBLE
+        else
+            fabAdd?.visibility = View.GONE
+    }
+
+    override fun showFavoriteImg() {
+        imgFavorite?.visibility = View.VISIBLE
+        imgFavorite?.alpha = 0.0f
+        imgFavorite?.animate()
+            ?.setDuration(600)
+            ?.alpha(1.0f)
     }
 
     private fun initView(view: View) {
@@ -148,6 +159,7 @@ class WeatherFragment : BaseFragment(), IWeatherView {
         tvWindSpeed = view.findViewById(R.id.tv_wind_speed_value)
         tvHumidity = view.findViewById(R.id.tv_humidity_value)
         vCityNotFound = view.findViewById(R.id.v_city_not_found)
+        imgFavorite = view.findViewById(R.id.img_favorite)
 
         rvHourly = view.findViewById(R.id.rv_hourly)
         rvDays = view.findViewById(R.id.rv_days)
@@ -157,7 +169,16 @@ class WeatherFragment : BaseFragment(), IWeatherView {
         rvHourly?.adapter = hourlyAdapter
 
         fabAdd = view.findViewById(R.id.fab_add)
-        fabAdd?.setOnClickListener { getWeatherPresenter()?.saveCity() }
+        fabAdd?.setOnClickListener { getWeatherPresenter()?.trySaveCity() }
+
+        rvDays?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0)
+                    showFab(false)
+                else if (dy < 0)
+                    showFab(true)
+            }
+        })
     }
 
     private fun getWeatherPresenter(): WeatherPresenter? {

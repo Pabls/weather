@@ -15,7 +15,7 @@
     <string name="fragment_weather.humidity_percent">%</string>
     <string name="fragment_weather.pressure">pressure</string>
     <string name="fragment_weather.pressure_mbar">mbar</string>
-    <string name="fragment_weather.no_cities">No city found for this request. Use the search or</string>
+    <string name="fragment_weather.no_cities">No city found for this request.</string>
     <string name="fragment_weather.current_time">now</string>
 
     <string name="error.check_network_connection">Failed to load data, check network connection</string>

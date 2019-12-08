@@ -6,7 +6,7 @@ import ru.skillbranch.gameofthrones.presentation.base.IBaseView
 
 interface IWeatherView : IBaseView {
     fun getCityName(): String?
-    fun getLocation(): Pair<String?, String?>
+    fun isFavoriteCity(): Boolean?
     fun setDays(days: List<DayWeatherVm>)
     fun setHourly(hourly: List<HourlyVm>)
     fun setCityName(cityName: String)
@@ -19,4 +19,7 @@ interface IWeatherView : IBaseView {
     fun setWindSpeed(speed: String)
     fun setHumidity(humidity: String)
     fun showNotFoundError()
+    fun disableFab()
+    fun showFab(show: Boolean)
+    fun showFavoriteImg()
 }

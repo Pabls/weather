@@ -4,6 +4,7 @@ import com.ar4i.weather.data.models.ApiError
 import com.ar4i.weather.data.models.CityWeatherVm
 import com.ar4i.weather.data.models.DayWeatherVm
 import com.ar4i.weather.data.models.HourlyVm
+import com.ar4i.weather.data.repositories.cities.ICitiesRepository
 import com.ar4i.weather.data.repositories.resources.IResourcesRepository
 import com.ar4i.weather.data.repositories.weather.IWeatherRepository
 import com.ar4i.weather.presentation.base.BasePresenter
@@ -11,7 +12,8 @@ import com.ar4i.weather.presentation.weather.view.IWeatherView
 
 class WeatherPresenter(
     private val weatherRepository: IWeatherRepository,
-    private val resourceRepository: IResourcesRepository
+    private val resourceRepository: IResourcesRepository,
+    private val citiesRepository: ICitiesRepository
 ) : BasePresenter<IWeatherView>() {
 
     private var cityVm: CityWeatherVm? = null
@@ -45,6 +47,12 @@ class WeatherPresenter(
         }
     }
 
+    fun saveCity() {
+        if (cityVm != null) {
+            citiesRepository.saveCity(cityVm!!.cityName)
+        }
+    }
+
     private fun getWeather() {
         if (getView()?.getCityName() != null)
             weatherRepository.getWeatherByCityName(
@@ -65,7 +73,6 @@ class WeatherPresenter(
             getView()?.showError(message = response.second!!.message)
             getView()?.showNotFoundError()
         } else if (response.first != null) {
-            //val weatherVm = response.first!!
             this.cityVm = response.first!!
             getView()?.setDays(cityVm!!.weather)
             getView()?.setHourly(cityVm!!.weather.first().hourly)
@@ -85,7 +92,8 @@ class WeatherPresenter(
                 windSpeed = cityVm!!.windSpeed,
                 humidity = cityVm!!.humidity,
                 imageUrl = cityVm!!.imageUrl,
-                temperature = cityVm!!.temperature
+                temperature = cityVm!!.temperature,
+                time = cityVm!!.time
             )
         }
     }
@@ -97,7 +105,8 @@ class WeatherPresenter(
             windSpeed = hourlyVm.windSpeed,
             humidity = hourlyVm.humidity,
             imageUrl = hourlyVm.imageUrl,
-            temperature = hourlyVm.temperature
+            temperature = hourlyVm.temperature,
+            time = hourlyVm.time
         )
     }
 
@@ -107,7 +116,8 @@ class WeatherPresenter(
         pressure: String,
         windSpeed: String,
         humidity: String,
-        imageUrl: String
+        imageUrl: String,
+        time: String
     ) {
         getView()?.setDescription(description)
         getView()?.setTemperature(temperature)
@@ -115,6 +125,7 @@ class WeatherPresenter(
         getView()?.setWindSpeed(windSpeed)
         getView()?.setHumidity(humidity)
         getView()?.setCurrentCondition(imageUrl)
+        getView()?.setTime(time)
     }
 
     private fun getDayWeatherVmByDate(date: String): DayWeatherVm? {

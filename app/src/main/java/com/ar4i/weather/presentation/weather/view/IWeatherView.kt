@@ -11,6 +11,7 @@ interface IWeatherView : IBaseView {
     fun setHourly(hourly: List<HourlyVm>)
     fun setCityName(cityName: String)
     fun setDate(date: String)
+    fun setTime(time: String)
     fun setCurrentCondition(url: String)
     fun setDescription(description: String)
     fun setTemperature(temp: String)

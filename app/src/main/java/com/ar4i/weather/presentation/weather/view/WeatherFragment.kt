@@ -39,6 +39,7 @@ class WeatherFragment : BaseFragment(), IWeatherView {
 
     private var tvCityName: TextView? = null
     private var tvDate: TextView? = null
+    private var tvTime: TextView? = null
     private var ivCurrentCondition: ImageView? = null
     private var tvTemperatureLabel: TextView? = null
     private var tvDescription: TextView? = null
@@ -98,6 +99,10 @@ class WeatherFragment : BaseFragment(), IWeatherView {
         tvDate?.text = date
     }
 
+    override fun setTime(time: String) {
+        tvTime?.text = time
+    }
+
     override fun setCurrentCondition(url: String) {
         Picasso.get()
             .load(url)
@@ -135,6 +140,7 @@ class WeatherFragment : BaseFragment(), IWeatherView {
     private fun initView(view: View) {
         tvCityName = view.findViewById(R.id.tv_city_name)
         tvDate = view.findViewById(R.id.tv_date)
+        tvTime = view.findViewById(R.id.tv_time)
         ivCurrentCondition = view.findViewById(R.id.iv_current_condition)
         tvDescription = view.findViewById(R.id.tv_description)
         tvTemperatureLabel = view.findViewById(R.id.tv_temperature_label)
@@ -145,12 +151,13 @@ class WeatherFragment : BaseFragment(), IWeatherView {
 
         rvHourly = view.findViewById(R.id.rv_hourly)
         rvDays = view.findViewById(R.id.rv_days)
-        daysAdapter = DaysAdapter { day -> getWeatherPresenter()?.onDayClick(day)}
-        hourlyAdapter = HourlyAdapter { hour -> getWeatherPresenter()?.onHourClick(hour, tvDate?.text.toString())}
+        daysAdapter = DaysAdapter { day -> getWeatherPresenter()?.onDayClick(day) }
+        hourlyAdapter = HourlyAdapter { hour -> getWeatherPresenter()?.onHourClick(hour, tvDate?.text.toString()) }
         rvDays?.adapter = daysAdapter
         rvHourly?.adapter = hourlyAdapter
 
         fabAdd = view.findViewById(R.id.fab_add)
+        fabAdd?.setOnClickListener { getWeatherPresenter()?.saveCity() }
     }
 
     private fun getWeatherPresenter(): WeatherPresenter? {

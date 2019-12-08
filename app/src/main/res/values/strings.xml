@@ -9,15 +9,17 @@
         try to find the desired city through the search</string>
 
     <string name="fragment_weather.degree">°C</string>
-    <string name="fragment_weather.wind">WIND</string>
+    <string name="fragment_weather.wind">wind speed</string>
     <string name="fragment_weather.wind_speed">km/h</string>
-    <string name="fragment_weather.humidity">HUMIDITY</string>
+    <string name="fragment_weather.humidity">humidity</string>
     <string name="fragment_weather.humidity_percent">%</string>
-    <string name="fragment_weather.pressure">PRESSURE</string>
+    <string name="fragment_weather.pressure">pressure</string>
     <string name="fragment_weather.pressure_mbar">mbar</string>
     <string name="fragment_weather.no_cities">No city found for this request. Use the search or</string>
+    <string name="fragment_weather.current_time">now</string>
 
     <string name="error.check_network_connection">Failed to load data, check network connection</string>
     <string name="error.try_later">An error has occurred, try again later</string>
+
     <string name="snackbar.title.try_again">Try again</string>
 </resources>

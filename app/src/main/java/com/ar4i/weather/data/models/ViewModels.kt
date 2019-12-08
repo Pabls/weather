@@ -4,6 +4,7 @@ package com.ar4i.weather.data.models
 data class CityWeatherVm(
     val cityName: String,
     val date: String,
+    val time: String,
     val temperature: String,
     val description: String,
     val imageUrl: String,

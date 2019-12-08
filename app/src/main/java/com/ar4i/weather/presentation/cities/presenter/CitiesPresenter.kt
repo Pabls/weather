@@ -22,4 +22,7 @@ class CitiesPresenter(
         getView()?.showWeatherScreenByCityName(cityName)
     }
 
+    fun searchCity(cityName: String){
+        val i = cityName
+    }
 }

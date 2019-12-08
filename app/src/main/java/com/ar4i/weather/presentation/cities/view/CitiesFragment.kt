@@ -1,7 +1,10 @@
 package com.ar4i.weather.presentation.cities.view
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
 import com.ar4i.weather.R
@@ -51,6 +54,21 @@ class CitiesFragment : BaseFragment(), ICitiesView {
         vNoCities = view.findViewById(R.id.v_no_cities)
         adapter = CitiesAdapter { name -> getCitiesPresenter()?.onCityClick(name) }
         rvCities?.adapter = adapter
+
+        etSearch?.setOnEditorActionListener { textView, actionId, keyEvent ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                getCitiesPresenter()?.searchCity(etSearch?.text.toString())
+                etSearch?.text = null
+                etSearch?.clearFocus()
+
+                val inputMethodManager =
+                    activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                if (activity!!.currentFocus != null) {
+                    inputMethodManager.hideSoftInputFromWindow(activity!!.currentFocus!!.windowToken, 0)
+                }
+            }
+            false
+        }
     }
 
     private fun getRouter(): IRouter? = if (activity is IRouter) activity as IRouter else null

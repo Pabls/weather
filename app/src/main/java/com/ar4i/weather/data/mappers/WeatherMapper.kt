@@ -50,6 +50,7 @@ object WeatherMapper : IWeatherMapper {
         return CityWeatherVm(
             cityName = requestInfo.query,
             date = getCurrentDate(),
+            time = resourceRepository.getStringById(R.string.fragment_weather_current_time),
             temperature = currentCondition.temp.toString() + degree,
             description = currentCondition.descriptions.first().value,
             imageUrl = currentCondition.weatherIconUrl.first().value,

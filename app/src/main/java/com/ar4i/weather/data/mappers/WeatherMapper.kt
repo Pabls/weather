@@ -53,7 +53,7 @@ object WeatherMapper : IWeatherMapper {
             time = resourceRepository.getStringById(R.string.fragment_weather_current_time),
             temperature = currentCondition.temp.toString() + degree,
             description = currentCondition.descriptions.first().value,
-            imageUrl = currentCondition.weatherIconUrl.first().value,
+            imageUrl = currentCondition.weatherIconUrl.first().getConvertedValue(),
             pressure = currentCondition.pressure.toString() + pressureMba,
             windSpeed = currentCondition.windSpeed.toString() + windSpeed,
             humidity = currentCondition.humidity.toString() + humidityPercent,
@@ -80,7 +80,7 @@ object WeatherMapper : IWeatherMapper {
     private fun mapHourlyVm(hourly: Hourly, degree: String): HourlyVm =
         HourlyVm(
             time = formatTime(hourly.time),
-            imageUrl = hourly.weatherIconUrl.first().value,
+            imageUrl = hourly.weatherIconUrl.first().getConvertedValue(),
             temperature = hourly.temp.toString() + degree,
             humidity = hourly.humidity.toString(),
             windSpeed = hourly.windSpeed.toString(),

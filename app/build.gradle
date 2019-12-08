@@ -16,7 +16,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "BASE_URL", "\"http://api.worldweatheronline.com\""
+        buildConfigField "String", "BASE_URL", "\"https://api.worldweatheronline.com\""
         buildConfigField "String", "API_KEY", "\"ff19fafdda674233be8183129190312\""
     }
     buildTypes {

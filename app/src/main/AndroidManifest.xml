@@ -10,6 +10,7 @@
     <application
             android:name=".app.WeatherApp"
             android:allowBackup="true"
+            android:usesCleartextTraffic="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/common.app_name"
             android:networkSecurityConfig="@xml/network_security_config"

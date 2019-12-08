@@ -32,7 +32,9 @@ data class CurrentCondition(
 
 data class IconUrl(
     @SerializedName("value") val value: String
-)
+) {
+    fun getConvertedValue(): String = value.replace("http", "https")
+}
 
 data class Weather(
     @SerializedName("date") val date: String,

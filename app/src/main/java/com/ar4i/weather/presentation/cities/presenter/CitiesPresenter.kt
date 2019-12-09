@@ -1,5 +1,6 @@
 package com.ar4i.weather.presentation.cities.presenter
 
+import com.ar4i.weather.R
 import com.ar4i.weather.data.repositories.cities.ICitiesRepository
 import com.ar4i.weather.data.repositories.location.ILocationRepository
 import com.ar4i.weather.data.repositories.resources.IResourcesRepository
@@ -97,6 +98,8 @@ class CitiesPresenter(
         val cityName = locationRepository.getCityNameByLocation()
         if (cityName != null) {
             getView()?.showWeatherScreenByCityName(cityName, isFavorite = isFavoriteCity(cityName))
+        } else {
+            getView()?.showError(resourceRepository.getStringById(R.string.fragment_cities_geolocation_disabled))
         }
     }
 

@@ -2,10 +2,10 @@
     <string name="common.app_name">Погода</string>
     <string name="common.no_network_connection">Нет сетевого соединения</string>
 
-    <string name="fragment_cities.edittext.hint">Названеи города</string>
+    <string name="fragment_cities.edittext.hint">Название города</string>
     <string name="fragment_cities.no_cities">В избранное не добавлено ни одного города. Используйте поиск или</string>
     <string name="fragment_cities.button.get_location">последние координаты</string>
-    <string name="fragment_cities.geolocation_disabled">Мы не смогли определить вашу геолокацию,
+    <string name="fragment_cities.geolocation_disabled">Не удалось определить вашу геолокацию,
         попробуйте найти нужный город через поиск</string>
 
     <string name="fragment_weather.degree">°C</string>

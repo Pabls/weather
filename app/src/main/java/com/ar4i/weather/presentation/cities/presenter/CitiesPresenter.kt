@@ -46,7 +46,7 @@ class CitiesPresenter(
     fun searchCity(cityName: String) {
         getView()?.clearEditText()
         if (cityName.isNotEmpty()) {
-            getView()?.showWeatherScreenByCityName(cityName, isFavorite = cities.contains(cityName))
+            getView()?.showWeatherScreenByCityName(cityName, isFavorite = isFavoriteCity(cityName))
         }
     }
 
@@ -96,7 +96,9 @@ class CitiesPresenter(
     private fun getLocation() {
         val cityName = locationRepository.getCityNameByLocation()
         if (cityName != null) {
-            getView()?.showWeatherScreenByCityName(cityName, isFavorite = cities.contains(cityName))
+            getView()?.showWeatherScreenByCityName(cityName, isFavorite = isFavoriteCity(cityName))
         }
     }
+
+    private fun isFavoriteCity(cityName: String): Boolean = cities.contains(cityName)
 }

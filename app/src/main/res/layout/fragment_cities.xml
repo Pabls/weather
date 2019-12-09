@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
@@ -40,7 +40,7 @@
                 <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_search" />
+                        app:srcCompat="@drawable/ic_search"/>
 
                 <EditText
                         android:id="@+id/et_search"
@@ -54,7 +54,7 @@
                         android:maxLines="@integer/et_lines"
                         android:textColor="@color/dark_gray"
                         android:textColorHint="@color/dark_gray"
-                        android:textSize="@dimen/text_size_14" />
+                        android:textSize="@dimen/text_size_14"/>
 
             </LinearLayout>
 
@@ -73,7 +73,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar"
-            tools:listitem="@layout/item_city" />
+            tools:listitem="@layout/item_city"/>
 
     <include
             android:id="@+id/v_no_cities"
@@ -82,6 +82,6 @@
             android:layout_height="@dimen/match_constraint"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appbar" />
+            app:layout_constraintTop_toBottomOf="@+id/appbar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="common.app_name">Погода</string>
+    <string name="common.no_network_connection">Нет сетевого соединения</string>
+
+    <string name="fragment_cities.edittext.hint">Названеи города</string>
+    <string name="fragment_cities.no_cities">В избранное не добавлено ни одного города. Используйте поиск или</string>
+    <string name="fragment_cities.button.get_location">последние координаты</string>
+    <string name="fragment_cities.geolocation_disabled">Мы не смогли определить вашу геолокацию,
+        попробуйте найти нужный город через поиск</string>
+
+    <string name="fragment_weather.degree">°C</string>
+    <string name="fragment_weather.wind">скорость ветра</string>
+    <string name="fragment_weather.wind_speed">kм/ч</string>
+    <string name="fragment_weather.humidity">влажность</string>
+    <string name="fragment_weather.humidity_percent">%</string>
+    <string name="fragment_weather.pressure">давление</string>
+    <string name="fragment_weather.pressure_mbar">мбар</string>
+    <string name="fragment_weather.no_cities">Не удалось найти город по данному запросу</string>
+    <string name="fragment_weather.current_time">сейчас</string>
+
+    <string name="error.check_network_connection">Ошибка загрузки данных, проверьте подключение к сети</string>
+    <string name="error.try_later">Произошла ошибка, попробуйте позже</string>
+
+    <string name="snackbar.title.try_again">Попробуйте позже</string>>
+</resources>

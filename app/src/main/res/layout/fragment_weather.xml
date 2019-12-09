@@ -9,13 +9,16 @@
 
     <TextView
             android:id="@+id/tv_city_name"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:lines="@integer/et_lines"
             android:textColor="@android:color/black"
             android:textSize="@dimen/text_size_18"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/img_favorite"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/cities"/>
@@ -41,12 +44,12 @@
             app:layout_constraintTop_toTopOf="@+id/tv_date" tools:text="13:00"/>
 
     <com.ar4i.weather.presentation.custom.CircleImageView
-            app:civ_borderColor="@color/blue"
             android:id="@+id/iv_current_condition"
             android:layout_width="@dimen/image_view_current_condition_size"
             android:layout_height="@dimen/image_view_current_condition_size"
             android:layout_marginTop="@dimen/margin_8"
             android:layout_marginEnd="@dimen/margin_8"
+            app:civ_borderColor="@color/blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_temperature_label"
             app:layout_constraintHorizontal_chainStyle="packed"
